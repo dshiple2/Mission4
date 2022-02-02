@@ -15,14 +15,51 @@ namespace Mission4Jan24.Models
         }
         public DbSet<ApplicationResponse> Movies { get; set; }
 
+        public DbSet<Category> Categories { get; set; }
+
+        //seed data
+
+
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            mb.Entity<Category>().HasData(
+                new Category
+                {
+                    CategoryID = 1,
+                    CategoryName = "Family"
+                },
+                new Category
+                {
+                    CategoryID = 2,
+                    CategoryName = "Horror"
+                },
+                new Category
+                {
+                    CategoryID = 3,
+                    CategoryName = "Action"
+                },
+                new Category
+                {
+                    CategoryID = 4,
+                    CategoryName = "Romance"
+                },
+                new Category
+                {
+                    CategoryID = 5,
+                    CategoryName = "Mystery"
+                },
+                new Category
+                {
+                    CategoryID = 6,
+                    CategoryName = "Goat"
+                }
+            );
             mb.Entity<ApplicationResponse>().HasData(
 
                 new ApplicationResponse
                 {
                     ApplicationId = 1,
-                    Category = "Family",
+                    CategoryID = 1,
                     Title = "Surfs Up",
                     Year = 2005,
                     Director = "Hilton",
@@ -31,7 +68,7 @@ namespace Mission4Jan24.Models
                 new ApplicationResponse
                 {
                     ApplicationId = 2,
-                    Category = "Family",
+                    CategoryID = 1,
                     Title = "Megamind",
                     Year = 2006,
                     Director = "Washington",
@@ -40,7 +77,7 @@ namespace Mission4Jan24.Models
                 new ApplicationResponse
                 {
                     ApplicationId = 3,
-                    Category = "Family",
+                    CategoryID = 6,
                     Title = "Shrek",
                     Year = 2002,
                     Director = "Nieldman",

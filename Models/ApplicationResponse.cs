@@ -12,8 +12,6 @@ namespace Mission4Jan24.Models
         [Required]
         public int ApplicationId { get; set; }
         [Required]
-        public string Category { get; set; }
-        [Required]
         public string Title { get; set; }
         [Required]
         public int Year { get; set; }
@@ -25,5 +23,10 @@ namespace Mission4Jan24.Models
         public string LentTo { get; set; }
         [StringLength(20, ErrorMessage = "Must be less than 20 characters long")]
         public string Notes { get; set; }
+
+        //Build a foreign key relationship
+        [Required]
+        public int CategoryID { get; set; }
+        public Category Category { get; set; }
     }
 }

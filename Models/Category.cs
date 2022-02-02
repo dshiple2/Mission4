@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 
 namespace Mission4Jan24.Models
 {
-    public class Startup
+    public class Category
     {
-        public void Configure(IApplicationBuilder app)
-        {
-            // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
-        }
+        [Key]
+        [Required]
+        public int CategoryID { get; set; }
+        public string CategoryName { get; set; }
     }
 }

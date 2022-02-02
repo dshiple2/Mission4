@@ -21,9 +21,8 @@ namespace Mission4Jan24.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("CategoryID")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Director")
                         .IsRequired()
@@ -52,13 +51,15 @@ namespace Mission4Jan24.Migrations
 
                     b.HasKey("ApplicationId");
 
+                    b.HasIndex("CategoryID");
+
                     b.ToTable("Movies");
 
                     b.HasData(
                         new
                         {
                             ApplicationId = 1,
-                            Category = "Family",
+                            CategoryID = 1,
                             Director = "Hilton",
                             Edited = false,
                             Rating = "R",
@@ -68,7 +69,7 @@ namespace Mission4Jan24.Migrations
                         new
                         {
                             ApplicationId = 2,
-                            Category = "Family",
+                            CategoryID = 1,
                             Director = "Washington",
                             Edited = false,
                             Rating = "G",
@@ -78,13 +79,68 @@ namespace Mission4Jan24.Migrations
                         new
                         {
                             ApplicationId = 3,
-                            Category = "Family",
+                            CategoryID = 6,
                             Director = "Nieldman",
                             Edited = false,
                             Rating = "PG",
                             Title = "Shrek",
                             Year = 2002
                         });
+                });
+
+            modelBuilder.Entity("Mission4Jan24.Models.Category", b =>
+                {
+                    b.Property<int>("CategoryID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CategoryID");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryID = 1,
+                            CategoryName = "Family"
+                        },
+                        new
+                        {
+                            CategoryID = 2,
+                            CategoryName = "Horror"
+                        },
+                        new
+                        {
+                            CategoryID = 3,
+                            CategoryName = "Action"
+                        },
+                        new
+                        {
+                            CategoryID = 4,
+                            CategoryName = "Romance"
+                        },
+                        new
+                        {
+                            CategoryID = 5,
+                            CategoryName = "Mystery"
+                        },
+                        new
+                        {
+                            CategoryID = 6,
+                            CategoryName = "Goat"
+                        });
+                });
+
+            modelBuilder.Entity("Mission4Jan24.Models.ApplicationResponse", b =>
+                {
+                    b.HasOne("Mission4Jan24.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
