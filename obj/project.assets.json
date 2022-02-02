@@ -1206,7 +1206,7 @@
       "outputPath": "/Users/davidshipley/Projects/Mission4Jan24/Mission4Jan24/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/davidshipley/.config/NuGet/NuGet.Config"
+        "/Users/davidshipley/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"

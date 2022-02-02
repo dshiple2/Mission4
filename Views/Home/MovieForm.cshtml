@@ -3,24 +3,15 @@
 }
  @model Mission4Jan24.Models.ApplicationResponse
 
-<h1>Add a Movie</h1>
+<h1>Fill out dating application</h1>
 <br />
 
 <div>
     <form method="post">
-        <div asp-validation-summary="All"></div>
         <table class="table table-hover">
             <tr>
-                <td><label asp-for="CategoryID">Category:</label></td>
-                <td>
-                    <select asp-for="CategoryID">
-                        <option value="">Select a Category: </option>
-                        @foreach (Category c in ViewBag.Categories)
-                        {
-                            <option value="@c.CategoryID">@c.CategoryName</option>
-                        }
-                    </select>
-                </td>
+                <td><label asp-for="Category">Category:</label></td>
+                <td><input asp-for="Category" /></td>
             </tr>
             <tr>
                 <td><label asp-for="Title">Title:</label></td>
@@ -38,7 +29,6 @@
                 <td><label asp-for="Rating">Rating:</label></td>
                 <td>
                     <select asp-for="Rating">
-                        <option value="">Choose a Rating: </option>
                         <option value="G">G</option>
                         <option value="PG">PG</option>
                         <option value="PG-13">PG-13</option>
@@ -50,7 +40,6 @@
                 <td><label asp-for="Edited">Edited:</label></td>
                 <td>
                     <select asp-for="Edited">
-                        <option value="">Choose an Option: </option>
                         <option value="true">Yes</option>
                         <option value="false">No</option>
                     </select>
